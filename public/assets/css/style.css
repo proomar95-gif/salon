@@ -1,0 +1,47 @@
+:root {
+  --primary: #d63384;
+  --bg: #fff5f8;
+  --text: #222;
+}
+* { box-sizing: border-box; font-family: "Tajawal", Arial, sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 250px;
+  background: #fff;
+  border-left: 1px solid #f1c4d8;
+  padding: 1rem;
+  transition: transform .2s;
+}
+.brand { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
+.menu-item { display: block; color: #555; text-decoration: none; padding: .6rem .7rem; border-radius: 8px; margin-bottom: .3rem; }
+.menu-item.active, .menu-item:hover { background: #fde2ef; color: var(--primary); }
+.content { flex: 1; padding: 1rem; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-bottom: 1rem; }
+.icon-button, .btn { border: 0; background: var(--primary); color: #fff; border-radius: 8px; padding: .6rem .8rem; cursor: pointer; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .8rem; }
+.card { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 14px rgba(0,0,0,.04); margin-bottom: .8rem; }
+.layout-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: .3rem; }
+.day { background: #fafafa; text-align: center; padding: .5rem 0; border-radius: 6px; }
+.day.busy { background: #ffd3e5; color: var(--primary); font-weight: 700; }
+.timeline { list-style: none; padding: 0; }
+.timeline li { padding: .4rem 0; border-bottom: 1px dashed #eee; }
+.timeline span { font-weight: 700; margin-left: .5rem; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid #eee; padding: .5rem; text-align: right; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); align-items: center; justify-content: center; }
+.modal.open { display: flex; }
+.modal-content { width: min(95%, 420px); background: #fff; border-radius: 10px; padding: 1rem; }
+.modal-content input, .modal-content select { width: 100%; padding: .6rem; margin-bottom: .5rem; border: 1px solid #ddd; border-radius: 8px; }
+.thermal-invoice { width: 280px; background: #fff; border: 1px dashed #333; padding: .8rem; font-family: monospace; }
+@media (max-width: 900px) {
+  .layout-2 { grid-template-columns: 1fr; }
+  .sidebar { position: fixed; top: 0; right: 0; bottom: 0; z-index: 20; transform: translateX(100%); }
+  .sidebar.open { transform: translateX(0); }
+}
+@media print {
+  body * { visibility: hidden; }
+  #invoice, #invoice * { visibility: visible; }
+  #invoice { position: absolute; top: 0; right: 0; }
+}
